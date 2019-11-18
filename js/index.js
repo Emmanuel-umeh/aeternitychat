@@ -151,10 +151,12 @@ $('#sendtext').click(async function () {
   var message  = ($('#usermessage').val())
   console.log(message)
 
-  await contractCall('message', [message], 0)
+  newmsg  = await contractCall('message', [message], 0)
 
   chatArray.push({
-    message:message
+    message:message,
+    owner : newmsg.owner,
+    timestamp : newmsg.timestamp
   })
 
 
