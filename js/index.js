@@ -158,6 +158,8 @@ $('#sendtext').click(async function () {
     owner : newmsg.owner,
     timestamp : newmsg.timestamp
   })
+  console.log(newmsg.owner)
+  console.log(newmsg.timestamp)
 
 
   renderProduct();
