@@ -130,7 +130,7 @@ $('#gaming').click(async function () {
     console.log("Gaming clicked")
     $(".spinner").show();
 
-    await contractCall('joinroom', [2], 1000000)
+    await contractCall('joinroom', [2], 1000)
 
 
     renderProduct();
@@ -142,4 +142,25 @@ $('#gaming').click(async function () {
     // document.getElementById("confirmation").innerHTML = " Reservation purchased Successfully"
 
     // $.colorbox({html:"<h1>Reservation booked successfully</h1>"});
+});
+
+$('#sendtext').click(async function () {
+  console.log("sending message")
+  $(".spinner").show();
+
+  var message  = ($('messages').val())
+  console.log(message)
+
+  await contractCall('message', [message], 0)
+
+
+  renderProduct();
+
+  $(".spinner").hide();
+
+  console.log("message sent ")
+
+  // document.getElementById("confirmation").innerHTML = " Reservation purchased Successfully"
+
+  // $.colorbox({html:"<h1>Reservation booked successfully</h1>"});
 });
