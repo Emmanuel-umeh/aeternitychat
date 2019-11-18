@@ -127,6 +127,7 @@ window.addEventListener('load', async () => {
 
 
 $('#gaming').click(async function () {
+    console.log("Gaming clicked")
     $(".spinner").show();
 
     await contractCall('joinroom', [2], 1000000)
