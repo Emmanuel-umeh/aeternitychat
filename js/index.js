@@ -148,7 +148,7 @@ $('#sendtext').click(async function () {
   console.log("sending message")
   $(".spinner").show();
 
-  var message  = ($('messages').val())
+  var message  = ($('#messages').val())
   console.log(message)
 
   await contractCall('message', [message], 0)
