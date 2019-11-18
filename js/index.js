@@ -47,7 +47,7 @@ payable contract Chat  =
     `;
 
 
-const contractAddress = 'ct_2XYCYJ92H56pLL1Asucd4JcNSUHBoaBjjrmX7CJrMh1hSNDiPC';
+const contractAddress = 'ct_2EnWDgB5HkhCAJoHMQBnnSdkKtohw5SVwEenNG5TD4vDL4trQf';
 var chatArray = [];
 var client = null;
 var chats = 0;
