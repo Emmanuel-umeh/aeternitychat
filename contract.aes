@@ -1,0 +1,44 @@
+
+payable contract Chat  =
+  
+    
+  record user = 
+    {
+    owner: address,
+    id : int,
+    message : string,
+    timestamp : int
+    }
+    
+  record state = {
+    chats : map(int, user),
+    chatslength : int}
+    
+  entrypoint init() = { 
+    chats = {},
+    chatslength = 0}
+  //returns lenght of chats 
+  entrypoint chatLength() : int = 
+    state.chatslength 
+    
+  entrypoint getUser(index : int) = 
+    switch(Map.lookup(index, state.chats))
+      None => abort("User doesnt exist")
+      Some(x) => x  
+    //Registers a Land
+    
+  payable stateful entrypoint message(message' : string) = 
+    let timestamp = Chain.timestamp
+    let newChat = {
+      id = chatLength()+1,
+      owner  = Call.caller,
+      message = message',
+      timestamp = timestamp}
+    
+    let index = chatLength() + 1
+    put(state{chats[index] = newChat, chatslength = index})
+    
+  
+    
+  payable stateful entrypoint joinroom(index : int) = 
+    Chain.spend(Contract.address, 1000000)  
