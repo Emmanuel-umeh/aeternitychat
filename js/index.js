@@ -152,7 +152,7 @@ $('#sendtext').click(async function () {
   console.log(message)
 
   await contractCall('message', [message], 0)
-  i = await callStatic('chatLenght', [])
+  i = await callStatic('chatLength', [])
   newmsg = await callStatic('getUser', [i]);
 
   chatArray.push({
