@@ -153,6 +153,10 @@ $('#sendtext').click(async function () {
 
   await contractCall('message', [message], 0)
 
+  chatArray.push({
+    message:message
+  })
+
 
   renderProduct();
 
