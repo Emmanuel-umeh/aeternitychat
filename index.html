@@ -50,11 +50,22 @@
       <div class="update-mssg text-center my-2"></div>
     </form>
   </div>
+
+  <div id="general"></div>
+
+  <script id="template" type="x-tmpl-mustache">
+    {{#chatArray}}
+<div>
+  <h3>{{owner}} : {{message}}</h3>
+  <p>{{timestamp}}</p>
+</div>
+{{/chatArray}}
+</script>
   
   <script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
-  <script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script> -->
+  <!-- <script>
     // Initialize Firebase
     var config = {
       apiKey: "AIzaSyBSEjfIg32YR9X0w8vdvmEJ8VkdqVS85Gk",
@@ -66,9 +77,11 @@
     };
     firebase.initializeApp(config);
     const db = firebase.firestore();
-  </script>
-  <script src="scripts/chat.js"></script>
-  <script src="scripts/ui.js"></script>
-  <script src="scripts/app.js"></script>
+  </script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js"></script>
+  <script src="https://unpkg.com/@aeternity/aepp-sdk/dist/aepp-sdk.browser-script.js"></script>
+  <script src="js/index.js"></script>
+  
+
 </body>
 </html>
