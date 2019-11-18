@@ -66,7 +66,7 @@ function renderProduct() {
 
 
 
-    $('#general').html(rendered);
+    $('#body').html(rendered);
     console.log("rendered")
 }
 // //Create a asynchronous read call for our smart contract
