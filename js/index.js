@@ -117,8 +117,8 @@ async function contractCall(func, args, value) {
 window.addEventListener('load', async () => {
     $(".spinner").show();
 
-    $("#music").hide();
-    $("#game").hide();
+    // $("#music").hide();
+    // $("#game").hide();
 
 
     client = await Ae.Aepp()
