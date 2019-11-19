@@ -155,8 +155,8 @@ async function contractCall(func, args, value) {
 window.addEventListener('load', async () => {
     $(".spinner").show();
 
-    // $("#music").hide();
-    // $("#game").hide();
+    $("#musicbutton").hide();
+    $("#gamebutton").hide();
 
 
     client = await Ae.Aepp()
@@ -211,6 +211,7 @@ $('#gameGroup').click(async function () {
 
     $("#music").hide();
     $("#game").show();
+    $("#gamebutton").show();
 
     renderGame();
 
@@ -227,6 +228,7 @@ $('#musicGroup').click(async function () {
   $(".spinner").show();
 
   $("#game").hide();
+  $("#musicbutton").show();
   $("#music").show();
 
 
@@ -281,8 +283,8 @@ $('#sendMusic').click(async function () {
   console.log(message)
 
   await contractCall('message', [message], 0)
-  i = await callStatic('chatLength', [])
-  newmsg = await callStatic('getUser', [i]);
+  i = await callStatic('musicLength', [])
+  newmsg = await callStatic('getMusic', [i]);
 
   musicChatArray.push({
     message:message,
