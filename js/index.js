@@ -199,7 +199,8 @@ window.addEventListener('load', async () => {
 
       })
   }
-    $(".spinner").hide();
+    
+    $('.spinner').fadeOut();
 });
 
 
@@ -218,7 +219,7 @@ $('#gameGroup').click(async function () {
 
     renderGame();
 
-    $(".spinner").hide();
+    $('.spinner').fadeOut();
 
     console.log("SUCCESSFUL")
 
@@ -240,7 +241,7 @@ $('#musicGroup').click(async function () {
 
   renderMusic();
 
-  $(".spinner").hide();
+  $('.spinner').fadeOut();
 
   console.log("Music room SUCCESSFUL")
 
@@ -270,7 +271,7 @@ $('#sendGame').click(async function () {
 
   renderGame();
 
-  $(".spinner").hide();
+  $('.spinner').fadeOut();
 
   console.log("message sent ")
 
@@ -300,7 +301,7 @@ $('#sendMusic').click(async function () {
 
   renderMusic();
 
-  $(".spinner").hide();
+  $('.spinner').fadeOut();
 
   console.log("message sent ")
 
