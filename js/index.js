@@ -209,7 +209,7 @@ $('#gameGroup').click(async function () {
     await contractCall('joinroom', [], 1000)
     
 
-    $("#music").hide();
+    $("#musicsection").hide();
     $("#game").show();
     $("#gamesection").show();
 
@@ -227,7 +227,7 @@ $('#musicGroup').click(async function () {
   console.log("Music clicked")
   $(".spinner").show();
 
-  $("#game").hide();
+  $("#gamesection").hide();
   $("#musicsection").show();
   $("#music").show();
 
