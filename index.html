@@ -33,6 +33,7 @@
   </div>
 
   <div id="game">
+      <h2>Game Chat Room</h2>
   
   <div style="text-align: center;">
       <input type="text" id="usermessage" placeholder="enter your text">
@@ -42,6 +43,7 @@
 
 
 <div id="music">
+    <h2>Music Chat Room</h2>
   
     <div style="text-align: center;">
         <input type="text" id="musicmessage" placeholder="enter your text">
@@ -54,7 +56,7 @@
   <script id="template" type="x-tmpl-mustache">
     {{#gameChatArray}}
 <div>
-<h2>Game Chat Room</h2>
+
 
   <p>{{owner}} : {{message}}</p>
   
@@ -70,7 +72,7 @@
 <script id="templateMusic" type="x-tmpl-mustache">
     {{#musicChatArray}}
 <div>
-<h2>Music Chat Room</h2>
+
 
   <p>{{owner}} : {{message}}</p>
   

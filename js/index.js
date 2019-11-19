@@ -117,6 +117,10 @@ async function contractCall(func, args, value) {
 window.addEventListener('load', async () => {
     $(".spinner").show();
 
+    $("#music").hide();
+    $("#game").hide();
+
+
     client = await Ae.Aepp()
 
     hackLength = await callStatic('chatLength', []);
@@ -142,57 +146,6 @@ window.addEventListener('load', async () => {
 
 
 
-
-// $('#gaming').click(async function () {
-//     console.log("Gaming clicked")
-//     $(".spinner").show();
-
-//     await contractCall('joinroom', [2], 1000)
-
-//     $('#body').hide()
-
-
-//     renderGame();
-
-//     $(".spinner").hide();
-
-//     console.log("SUCCESSFUL")
-
-    // document.getElementById("confirmation").innerHTML = " Reservation purchased Successfully"
-
-    // $.colorbox({html:"<h1>Reservation booked successfully</h1>"});
-// });
-
-// $('#sendtext').click(async function () {
-//   console.log("sending message")
-//   $(".spinner").show();
-
-//   var message  = ($('#usermessage').val())
-//   console.log(message)
-
-//   await contractCall('message', [message], 0)
-//   i = await callStatic('chatLength', [])
-//   newmsg = await callStatic('getUser', [i]);
-
-//   gameChatArray.push({
-//     message:message,
-//     owner : newmsg.owner,
-//     timestamp : Date(newmsg.timestamp)
-//   })
-//   console.log(newmsg.owner)
-//   console.log(newmsg.timestamp)
-
-
-//   renderGame();
-
-//   $(".spinner").hide();
-
-//   console.log("message sent ")
-
-//   // document.getElementById("confirmation").innerHTML = " Reservation purchased Successfully"
-
-//   // $.colorbox({html:"<h1>Reservation booked successfully</h1>"});
-// });
 
 $('#gameGroup').click(async function () {
     console.log("Gaming clicked")
