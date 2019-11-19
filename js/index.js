@@ -152,6 +152,9 @@ async function contractCall(func, args, value) {
     return calledSet;
 }
 
+$("#gamesection").hide();
+$("#musicsection").hide();
+
 window.addEventListener('load', async () => {
     $(".spinner").show();
 
