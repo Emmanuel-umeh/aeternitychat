@@ -39,6 +39,42 @@
   
   <div id="game">
 
+      <section class="msger">
+  
+          <main class="msger-chat">
+            <div class="msg left-msg">
+              <div
+               class="msg-img"
+               style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
+              ></div>
+        
+              <div class="msg-bubble">
+                <div class="msg-info">
+                  <div class="msg-info-name">BOT</div>
+                  <div class="msg-info-time">12:45</div>
+                </div>
+        
+                <div class="msg-text">
+                  Hi, welcome to SimpleChat! Go ahead and send me a message. 😄
+                </div>
+              </div>
+            </div>
+        
+            <div class="msg right-msg">
+              <div
+               class="msg-img"
+               style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"
+              ></div>
+        
+            </div>
+          </main>
+        
+          <form class="msger-inputarea">
+            <input type="text" class="msger-input" placeholder="Enter your message...">
+            <button type="submit" class="msger-send-btn">Send</button>
+          </form>
+        </section>
+
   
 </div>
 
@@ -50,18 +86,51 @@
 
 
 <h2>Music Chat Room</h2>
-<div id="music">
+
+
+    <section class="msger">
+  
+        <main class="msger-chat">
+          <div class="msg left-msg">
+            <div
+             class="msg-img"
+             style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
+            ></div>
+      
+            <div class="msg-bubble">
+              <div class="msg-info">
+                <div class="msg-info-name">BOT</div>
+                <div class="msg-info-time">12:45</div>
+              </div>
+      
+              <div class="msg-text">
+                Hi, welcome to SimpleChat! Go ahead and send me a message. 😄
+              </div>
+            </div>
+          </div>
+          <div id="music">
+
+          </div>
+      
+          <div class="msg right-msg">
+            <div
+             class="msg-img"
+             style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"
+            ></div>
+      
+          </div>
+        </main>
+      
+        <form class="msger-inputarea">
+          <input id="musicmessage" type="text" class="msger-input" placeholder="Enter your message...">
+          <button id="sendMusic" type="submit" class="msger-send-btn">Send</button>
+        </form>
+      </section>
     
 
 </div>
 
 
-  
-    <div id="musicbutton" style="text-align: center;">
-        <input type="text" id="musicmessage" placeholder="enter your text">
-        <button id="sendMusic">Send</button>
-      </div>
-</div>
 
   <script id="template" type="x-tmpl-mustache">
     {{#gameChatArray}}
@@ -80,6 +149,8 @@
 
 
 <script id="templateMusic" type="x-tmpl-mustache">
+
+  
     {{#musicChatArray}}
 <div>
 
