@@ -35,7 +35,7 @@
   </div>
 
 
-  <h2>Game Chat Room</h2>
+ 
   
   
 
@@ -79,7 +79,7 @@
 
 
 
-<h2>Music Chat Room</h2>
+
 
 
     <section id="musicsection" class="msger">
@@ -155,14 +155,19 @@
 
   
     {{#musicChatArray}}
-<div>
+    <div>
 
-
-  <p>{{owner}} : {{message}}</p>
-<!--   
-  <p>{{timestamp}}</p>
-</div> -->
-
+        <div class="msg-text">
+            {{message}} : {{owner}}
+          </div>
+          <div
+                   class="msg-img"
+                   style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"
+                  ></div>
+      
+      
+      <!-- <p>{{timestamp}}</p> -->
+    </div>
 
 
 {{/musicChatArray}}

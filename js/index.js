@@ -289,10 +289,10 @@ $('#sendMusic').click(async function () {
   musicChatArray.push({
     message:message,
     owner : newmsg.owner,
-    timestamp : Date(newmsg.timestamp)
+    timestamp : Date(newmsg.time)
   })
   console.log(newmsg.owner)
-  console.log(newmsg.timestamp)
+  console.log(newmsg.time)
 
 
   renderMusic();
