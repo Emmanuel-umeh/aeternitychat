@@ -73,7 +73,7 @@ function renderGame() {
 
 function renderMusic() {
     
-  var template = $('#music').html();
+  var template = $('#templateMusic').html();
 
   Mustache.parse(template);
   var rendered = Mustache.render(template, {
