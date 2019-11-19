@@ -1,57 +1,95 @@
 const contractSource = `
 
+
 payable contract Chat  =
   
     
-  record user = 
+  record music = 
     {
     owner: address,
     id : int,
     message : string,
-    timestamp : int
+    time : int
+    }
+
+  record game  =
+    {
+    gameowner: address,
+    gameid : int,
+    gamemessage : string,
+    gametimestamp : int 
+
     }
     
   record state = {
-    chats : map(int, user),
-    chatslength : int}
+    musics : map(int, music),
+    games : map(int,game),
+
+    gamelength : int,
+
+    musiclength : int}
     
   entrypoint init() = { 
-    chats = {},
-    chatslength = 0}
-  //returns lenght of chats 
-  entrypoint chatLength() : int = 
-    state.chatslength 
+    musics = {},
+    games = {},
+    musiclength = 0,
+    gamelength = 0 }
+  //returns lenght of chats in music group
+  entrypoint musicLength() : int = 
+    state.musiclength 
+//returns lenght of chats in game group
+  entrypoint gameLength() : int = 
+    state.gamelength 
     
-  entrypoint getUser(index : int) = 
-    switch(Map.lookup(index, state.chats))
-      None => abort("User doesnt exist")
+    // gets chats inmusic group
+  entrypoint getMusic(index : int) = 
+    switch(Map.lookup(index, state.musics))
+      None => abort("music message doesnt exist")
       Some(x) => x  
-    //Registers a Land
-    
-  payable stateful entrypoint message(message' : string) = 
-    let timestamp = Chain.timestamp
-    let newChat = {
-      id = chatLength()+1,
+
+    // gets chats in game groups
+  entrypoint getGame(index : int) = 
+    switch(Map.lookup(index, state.games))
+      None => abort("game message doesnt exist")
+      Some(x) => x  
+
+    // sends message to the music group
+  payable stateful entrypoint messageMusic(message' : string) = 
+    let time' = Chain.timestamp
+    let newMusic = {
+      id = musicLength()+1,
       owner  = Call.caller,
       message = message',
-      timestamp = timestamp}
+      time = time'}
     
-    let index = chatLength() + 1
-    put(state{chats[index] = newChat, chatslength = index})
+    let index = musicLength() + 1
+    put(state{musics[index] = newMusic, musiclength = index})
+
+    // sends message to the game group
+  payable stateful entrypoint messageGame(message' : string) = 
+    let timestamp = Chain.timestamp
+    let newGame = {
+      gameid = gameLength()+1,
+      gameowner  = Call.caller,
+      gamemessage = message',
+      gametimestamp = timestamp}
+    
+    let index = gameLength() + 1
+    put(state{games[index] = newGame, gamelength = index})
     
   
-    
-  payable stateful entrypoint joinroom(index : int) = 
+    // to join a room
+  payable stateful entrypoint joinroom() = 
     Chain.spend(Contract.address, 1000000)  
   
     `;
 
 
-const contractAddress = 'ct_2EnWDgB5HkhCAJoHMQBnnSdkKtohw5SVwEenNG5TD4vDL4trQf';
+const contractAddress = 'ct_kqGd1tJHSZi2mTKwTYbHX4CWM4vAUD8kABj3uzmPzjz9DdG75';
 var gameChatArray = [];
 var musicChatArray =[];
 var client = null;
-var chats = 0;
+
 
 
 
@@ -123,15 +161,16 @@ window.addEventListener('load', async () => {
 
     client = await Ae.Aepp()
 
-    hackLength = await callStatic('chatLength', []);
+    musicLength = await callStatic('musicLength', []);
+    gameLength = await callStatic('gameLength', []);
 
 
-    for (let i = 1; i <= hackLength; i++) {
-        const chats = await callStatic('getUser', [i]);
+    for (let i = 1; i <= musicLength; i++) {
+        const chats = await callStatic('getMusic', [i]);
 
-        console.log("for loop reached", "pushing to array")
+        console.log("for loop reached", "pushing music chats to array")
 
-        gameChatArray.push({
+        musicChatArray.push({
             id : chats.id,
             message : chats.message,
             timestamp: new Date(chats.timestamp),
@@ -141,6 +180,22 @@ window.addEventListener('load', async () => {
 
         })
     }
+
+    for (let i = 1; i <= gameLength; i++) {
+      const chats = await callStatic('getGame', [i]);
+
+      console.log("for loop reached", "pushing game chats to array")
+
+      gameChatArray.push({
+          id : chats.gameid,
+          message : chats.gamemessage,
+          timestamp: new Date(chats.gametimestamp),
+          owner :chats.gameowner
+
+
+
+      })
+  }
     $(".spinner").hide();
 });
 
@@ -151,7 +206,7 @@ $('#gameGroup').click(async function () {
     console.log("Gaming clicked")
     $(".spinner").show();
 
-    await contractCall('joinroom', [2], 1000)
+    await contractCall('joinroom', [], 1000)
     
 
     $("#music").hide();
@@ -175,7 +230,7 @@ $('#musicGroup').click(async function () {
   $("#music").show();
 
 
-  await contractCall('joinroom', [3], 1000)
+  await contractCall('joinroom', [], 1000)
 
 
   renderMusic();
@@ -195,17 +250,17 @@ $('#sendGame').click(async function () {
   var message  = ($('#usermessage').val())
   console.log(message)
 
-  await contractCall('message', [message], 0)
-  i = await callStatic('chatLength', [])
-  newmsg = await callStatic('getUser', [i]);
+  await contractCall('messageGame', [message], 0)
+  i = await callStatic('gameLength', [])
+  newmsg = await callStatic('getGame', [i]);
 
   gameChatArray.push({
-    message:message,
-    owner : newmsg.owner,
-    timestamp : Date(newmsg.timestamp)
+    message: message,
+    owner : newmsg.gameowner,
+    timestamp : Date(newmsg.gametimestamp)
   })
-  console.log(newmsg.owner)
-  console.log(newmsg.timestamp)
+  console.log(newmsg.gameowner)
+  console.log(newmsg.gametimestamp)
 
 
   renderGame();
