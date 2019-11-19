@@ -233,7 +233,7 @@ $('#music').click(async function () {
 });
 
 $('#sendGame').click(async function () {
-  console.log("sending message")
+  console.log("sending game message")
   $(".spinner").show();
 
   var message  = ($('#usermessage').val())
@@ -264,7 +264,7 @@ $('#sendGame').click(async function () {
 });
 
 $('#sendMusic').click(async function () {
-  console.log("sending message")
+  console.log("sending music message")
   $(".spinner").show();
 
   var message  = ($('#usermessage').val())
@@ -283,7 +283,7 @@ $('#sendMusic').click(async function () {
   console.log(newmsg.timestamp)
 
 
-  renderProduct();
+  renderMusic();
 
   $(".spinner").hide();
 
