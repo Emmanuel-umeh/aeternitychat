@@ -282,7 +282,7 @@ $('#sendMusic').click(async function () {
   var message  = ($('#musicmessage').val())
   console.log(message)
 
-  await contractCall('message', [message], 0)
+  await contractCall('messageMusic', [message], 0)
   i = await callStatic('musicLength', [])
   newmsg = await callStatic('getMusic', [i]);
 
