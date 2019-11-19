@@ -66,8 +66,24 @@ function renderProduct() {
 
 
 
-    $('#body').html(rendered);
+    $('#game').html(rendered);
     console.log("rendered")
+}
+
+function renderMusic() {
+    
+  var template = $('#templateMusic').html();
+
+  Mustache.parse(template);
+  var rendered = Mustache.render(template, {
+      chatArray
+  });
+
+
+
+
+  $('#music').html(rendered);
+  console.log("rendered")
 }
 // //Create a asynchronous read call for our smart contract
 async function callStatic(func, args) {
@@ -132,6 +148,8 @@ $('#gaming').click(async function () {
 
     await contractCall('joinroom', [2], 1000)
 
+    $('#body').hide()
+
 
     renderProduct();
 
@@ -158,7 +176,74 @@ $('#sendtext').click(async function () {
   chatArray.push({
     message:message,
     owner : newmsg.owner,
-    timestamp : newmsg.timestamp
+    timestamp : Date(newmsg.timestamp)
+  })
+  console.log(newmsg.owner)
+  console.log(newmsg.timestamp)
+
+
+  renderProduct();
+
+  $(".spinner").hide();
+
+  console.log("message sent ")
+
+  // document.getElementById("confirmation").innerHTML = " Reservation purchased Successfully"
+
+  // $.colorbox({html:"<h1>Reservation booked successfully</h1>"});
+});
+
+$('#gaming').click(async function () {
+    console.log("Gaming clicked")
+    $(".spinner").show();
+
+    await contractCall('joinroom', [2], 1000)
+
+
+    renderProduct();
+
+    $(".spinner").hide();
+
+    console.log("SUCCESSFUL")
+
+    // document.getElementById("confirmation").innerHTML = " Reservation purchased Successfully"
+
+    // $.colorbox({html:"<h1>Reservation booked successfully</h1>"});
+});
+
+$('#music').click(async function () {
+  console.log("Music clicked")
+  $(".spinner").show();
+
+  await contractCall('joinroom', [3], 1000)
+
+
+  renderMusic();
+
+  $(".spinner").hide();
+
+  console.log("Music room SUCCESSFUL")
+
+  // document.getElementById("confirmation").innerHTML = " Reservation purchased Successfully"
+
+  // $.colorbox({html:"<h1>Reservation booked successfully</h1>"});
+});
+
+$('#sendtext').click(async function () {
+  console.log("sending message")
+  $(".spinner").show();
+
+  var message  = ($('#usermessage').val())
+  console.log(message)
+
+  await contractCall('message', [message], 0)
+  i = await callStatic('chatLength', [])
+  newmsg = await callStatic('getUser', [i]);
+
+  chatArray.push({
+    message:message,
+    owner : newmsg.owner,
+    timestamp : Date(newmsg.timestamp)
   })
   console.log(newmsg.owner)
   console.log(newmsg.timestamp)

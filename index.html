@@ -36,12 +36,32 @@
     
   </div>
 
-  <div id="body"></div>
+  <div id="game"></div>
 </div>
+
+<div id="music"></div>
 
   <script id="template" type="x-tmpl-mustache">
     {{#chatArray}}
 <div>
+<h2>Game Chat Room</h2>
+
+  <p>{{owner}} : {{message}}</p>
+  
+  <p>{{timestamp}}</p>
+</div>
+
+
+
+{{/chatArray}}
+</script>
+
+
+<script id="templateMusic" type="x-tmpl-mustache">
+    {{#chatArray}}
+<div>
+<h2>Music Chat Room</h2>
+
   <p>{{owner}} : {{message}}</p>
   
   <p>{{timestamp}}</p>
