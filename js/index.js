@@ -255,7 +255,7 @@ $('#sendGame').click(async function () {
   console.log(newmsg.timestamp)
 
 
-  renderProduct();
+  renderGame();
 
   $(".spinner").hide();
 
