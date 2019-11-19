@@ -155,8 +155,8 @@ async function contractCall(func, args, value) {
 window.addEventListener('load', async () => {
     $(".spinner").show();
 
-    $("#musicbutton").hide();
-    $("#gamebutton").hide();
+    $("#gamesection").hide();
+    $("#musicsection").hide();
 
 
     client = await Ae.Aepp()
@@ -211,7 +211,7 @@ $('#gameGroup').click(async function () {
 
     $("#music").hide();
     $("#game").show();
-    $("#gamebutton").show();
+    $("#gamesection").show();
 
     renderGame();
 
@@ -228,7 +228,7 @@ $('#musicGroup').click(async function () {
   $(".spinner").show();
 
   $("#game").hide();
-  $("#musicbutton").show();
+  $("#musicsection").show();
   $("#music").show();
 
 
