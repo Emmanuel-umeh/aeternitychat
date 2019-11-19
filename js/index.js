@@ -218,6 +218,8 @@ $('#music').click(async function () {
   console.log("Music clicked")
   $(".spinner").show();
 
+  $("#game").hide();
+
   await contractCall('joinroom', [3], 1000)
 
 
