@@ -48,7 +48,8 @@ payable contract Chat  =
 
 
 const contractAddress = 'ct_2EnWDgB5HkhCAJoHMQBnnSdkKtohw5SVwEenNG5TD4vDL4trQf';
-var chatArray = [];
+var gameChatArray = [];
+var musicChatArray =[];
 var client = null;
 var chats = 0;
 
@@ -60,7 +61,7 @@ function renderProduct() {
 
     Mustache.parse(template);
     var rendered = Mustache.render(template, {
-        chatArray
+        gameChatArray
     });
 
 
@@ -76,7 +77,7 @@ function renderMusic() {
 
   Mustache.parse(template);
   var rendered = Mustache.render(template, {
-      chatArray
+      musicChatArray
   });
 
 
@@ -126,7 +127,7 @@ window.addEventListener('load', async () => {
 
         console.log("for loop reached", "pushing to array")
 
-        chatArray.push({
+        gameChatArray.push({
             id : chats.id,
             message : chats.message,
             timestamp: new Date(chats.timestamp),
@@ -173,7 +174,7 @@ $('#sendtext').click(async function () {
   i = await callStatic('chatLength', [])
   newmsg = await callStatic('getUser', [i]);
 
-  chatArray.push({
+  gameChatArray.push({
     message:message,
     owner : newmsg.owner,
     timestamp : Date(newmsg.timestamp)
@@ -198,7 +199,9 @@ $('#gaming').click(async function () {
     $(".spinner").show();
 
     await contractCall('joinroom', [2], 1000)
+    
 
+    $("#game").hide();
 
     renderProduct();
 
@@ -229,7 +232,7 @@ $('#music').click(async function () {
   // $.colorbox({html:"<h1>Reservation booked successfully</h1>"});
 });
 
-$('#sendtext').click(async function () {
+$('#sendGame').click(async function () {
   console.log("sending message")
   $(".spinner").show();
 
@@ -240,7 +243,7 @@ $('#sendtext').click(async function () {
   i = await callStatic('chatLength', [])
   newmsg = await callStatic('getUser', [i]);
 
-  chatArray.push({
+  gameChatArray.push({
     message:message,
     owner : newmsg.owner,
     timestamp : Date(newmsg.timestamp)

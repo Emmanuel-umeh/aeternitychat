@@ -28,21 +28,28 @@
     </div>
     <!-- new chat form -->
     
-     <div style="text-align: center;">
-       <input type="text" id="usermessage" placeholder="enter your text">
-       <button id="sendtext">Send</button>
-     </div>
  
     
   </div>
 
   <div id="game"></div>
+  
+  <div style="text-align: center;">
+      <input type="text" id="usermessage" placeholder="enter your text">
+      <button id="sendGame">Send</button>
+    </div>
 </div>
 
-<div id="music"></div>
+<div id="music">
+  
+    <div style="text-align: center;">
+        <input type="text" id="usermessage" placeholder="enter your text">
+        <button id="sendMusic">Send</button>
+      </div>
+</div>
 
   <script id="template" type="x-tmpl-mustache">
-    {{#chatArray}}
+    {{#gameChatArray}}
 <div>
 <h2>Game Chat Room</h2>
 
@@ -53,12 +60,12 @@
 
 
 
-{{/chatArray}}
+{{/gameChatArray}}
 </script>
 
 
 <script id="templateMusic" type="x-tmpl-mustache">
-    {{#chatArray}}
+    {{#musicChatArray}}
 <div>
 <h2>Music Chat Room</h2>
 
@@ -69,7 +76,7 @@
 
 
 
-{{/chatArray}}
+{{/musicChatArray}}
 </script>
   
   <!-- <script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script> -->
